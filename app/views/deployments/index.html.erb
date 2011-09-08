@@ -1,0 +1,5 @@
+<ul>
+  <%- @deployments.each do |deployment| %>
+    <li><%= deployment.created_at %></li>
+  <%- end %>
+</ul>

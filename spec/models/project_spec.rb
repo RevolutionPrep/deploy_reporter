@@ -18,6 +18,12 @@ describe Project, 'validations' do
 
 end
 
+describe Project, 'associations' do
+  
+  it { should have_many(:deployments) }
+  
+end
+
 describe Project, '.deploy_rate' do
 
   before(:each) do

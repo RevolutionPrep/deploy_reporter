@@ -1,0 +1,15 @@
+<%- @deployments.group_by(&:deployed_at).each do |deployed_at, deployments| %>
+	<table id='deployments-<%= deployed_at.strftime('%Y-%m-%d') %>'>
+		<%- deployments.each do |deployment| %>
+			<tr id='<%= deployment.to_view_id %>'>
+				<td><%= link_to deployment.project_name, deployment.project %></td>
+				<td><%= link_to deployment.deployed_at_timestamp, deployment %></td>
+				<td><%= deployment.deployer %></td>
+				<td>
+					<%= deployment.description_summary %><%= link_to '...', deployment %>
+				</td>
+			</tr>
+		<%- end %>
+	</table>
+<%- end %>
+

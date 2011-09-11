@@ -1,4 +1,5 @@
 class Project < ActiveRecord::Base
+  has_many :deployments
   validates :name, :presence => true
 
   def deploy_rate

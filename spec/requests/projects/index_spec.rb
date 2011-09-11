@@ -17,15 +17,15 @@ describe 'projects#index' do
 
   context 'for a given project within the list' do
 
-    it "displays the project's name" do
+    it "displays the project's name as a link to the project's show page" do
       within(:xpath, "//tr[@id='#{@huddle.to_view_id}']/td[1]") do
-        page.should have_content('Huddle')
+        page.should have_xpath("./a[@href='/projects/#{@huddle.id}' and contains(text(), 'Huddle')]")
       end
     end
 
     it "displays the project's deploy count" do
       within(:xpath, "//tr[@id='#{@huddle.to_view_id}']/td[2]") do
-        page.should have_content('400 deployments')
+        page.should have_xpath("./a[@href='/projects/#{@huddle.id}/deployments' and contains(text(), '400 deployments')]")
       end
     end
 
@@ -37,7 +37,7 @@ describe 'projects#index' do
 
     it "displays the project's incident rate" do
       within(:xpath, "//tr[@id='#{@huddle.to_view_id}']/td[4]") do
-        page.should have_content('1/49')
+        page.should have_xpath("./a[@href='/projects/#{@huddle.id}/incidents' and contains(text(), '1/49')]")
       end
     end
 

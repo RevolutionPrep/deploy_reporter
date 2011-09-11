@@ -1,10 +1,10 @@
 <table id='projects'>
 	<%- @projects.each do |project| %>
 	<tr id='<%= project.to_view_id %>'>
-		<td><%= project.name %></td>
-		<td><%= project.deploy_count %></td>
+		<td><%= link_to project.name, project %></td>
+		<td><%= link_to project.deploy_count, [project, :deployments] %></td>
 		<td><%= project.deploy_rate %></td>
-		<td><%= project.incident_rate_fraction %></td>
+		<td><%= link_to project.incident_rate_fraction, [project, :incidents] %></td>
 	</tr>
 	<%- end %>
 </table>

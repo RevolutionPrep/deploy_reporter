@@ -1,4 +1,5 @@
 class DeploymentDecorator < ApplicationDecorator
+  decorates :deployment
 
   def project_name
     project.name

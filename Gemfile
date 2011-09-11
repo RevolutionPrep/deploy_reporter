@@ -19,4 +19,5 @@ group :test do
   gem 'rspec-rails'
   gem 'shoulda-matchers'
   gem 'autotest-rails'
+  gem 'capybara'
 end

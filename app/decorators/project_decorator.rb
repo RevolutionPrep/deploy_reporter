@@ -1,6 +1,10 @@
 class ProjectDecorator < ApplicationDecorator
   decorates :project
 
+  def deploy_count
+    h.pluralize(model.deploy_count, 'deployment')
+  end
+
   def deploy_rate
     model.deploy_rate.round(2)
   end

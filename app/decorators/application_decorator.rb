@@ -25,4 +25,13 @@ class ApplicationDecorator < Draper::Base
   #   def updated_at
   #     formatted_timestamp(model.updated_at)
   #   end
+
+  def id
+    model.id
+  end
+
+  def to_view_id
+    "#{model.class.model_name.underscore}-#{id}"
+  end
+
 end

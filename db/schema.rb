@@ -10,12 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110908063809) do
+ActiveRecord::Schema.define(:version => 20110911040409) do
 
   create_table "projects", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.integer  "deploy_count", :default => 0, :null => false
   end
 
 end

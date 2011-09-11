@@ -1,0 +1,7 @@
+Autotest.add_hook(:initialize) do |autotest|
+  autotest.add_mapping(%r{^app/decorators/.*\.rb$}) do |f, _|
+    Dir['spec/decorators/*_spec.rb']
+  end
+
+  nil
+end

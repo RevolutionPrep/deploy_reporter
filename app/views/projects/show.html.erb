@@ -1,1 +1,6 @@
 <%= @project.name %>
+<div id='deploy_count'><%= @project.deploy_count %></div>
+<div id='deploy_rate'><%= @project.deploy_rate %></div>
+<div id='incident_rate'><%= @project.incident_rate_fraction %></div>
+<%= link_to 'Deployments', [@project, :deployments] %>
+<%= link_to 'Incidents', [@project, :incidents] %>

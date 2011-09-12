@@ -1,0 +1,19 @@
+<%- @incidents.group_by(&:occurred_at).each do |occurred_at, incidents| %>
+	<table id='incidents-<%= occurred_at.strftime('%Y-%m-%d').strip %>'>
+		<%- incidents.each do |incident| %>
+			<tr id='<%= incident.to_view_id %>'>
+				<td><%= incident.occurred_at_timestamp %></td>
+				<td><%= incident.time_to_detect_in_words %></td>
+				<td><%= incident.time_to_diagnose_in_words %></td>
+				<td><%= incident.time_to_resolve_in_words %></td>
+				<td>
+					<%= link_to '', '#', :class => 'severity orange', :alt => 'There were errors'                       if incident.had_errors? %>
+					<%= link_to '', '#', :class => 'severity orange', :alt => 'A redeployment was required'             if incident.required_redeploy? %>
+					<%= link_to '', '#', :class => 'severity red',    :alt => 'A rollback was required'                 if incident.required_rollback? %>
+					<%= link_to '', '#', :class => 'severity red',    :alt => 'Noticed outside of the development team' if incident.noticed_outside_of_development? %>
+					<%= link_to '', '#', :class => 'severity red',    :alt => 'A formal incident report was required'   if incident.required_formal_incident_report? %>
+				</td>
+			</tr>
+		<%- end %>
+	</table>
+<%- end %>

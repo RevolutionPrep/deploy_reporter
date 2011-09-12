@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110911210815) do
+ActiveRecord::Schema.define(:version => 20110912030240) do
 
   create_table "deployments", :force => true do |t|
     t.datetime "created_at"
@@ -22,6 +22,22 @@ ActiveRecord::Schema.define(:version => 20110911210815) do
   end
 
   add_index "deployments", ["project_id"], :name => "index_deployments_on_project_id"
+
+  create_table "incidents", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.datetime "occurred_at",                                        :null => false
+    t.integer  "time_to_detect"
+    t.integer  "time_to_diagnose"
+    t.integer  "time_to_resolve"
+    t.boolean  "had_errors",                      :default => false, :null => false
+    t.boolean  "required_redeploy",               :default => false, :null => false
+    t.boolean  "required_rollback",               :default => false, :null => false
+    t.boolean  "noticed_outside_of_development",  :default => false, :null => false
+    t.boolean  "required_formal_incident_report", :default => false, :null => false
+    t.text     "description",                     :default => "",    :null => false
+    t.text     "lessons_learned",                 :default => "",    :null => false
+  end
 
   create_table "projects", :force => true do |t|
     t.datetime "created_at"

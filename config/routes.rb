@@ -6,5 +6,6 @@ DeployReporter::Application.routes.draw do
   end
   
   resources :deployments, :only => [:index, :show]
+  resources :incidents, :only => :index
   
 end

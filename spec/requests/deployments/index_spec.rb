@@ -7,12 +7,12 @@ describe 'deployments#index' do
     @deployment_1 = DeploymentDecorator.new(@huddle.deployments.create!(
       :deployer    => 'ryan',
       :description => 'Deploying new versions of the Desmos gem.',
-      :deployed_at => DateTime.parse('2011-01-01T00:00:00Z')
+      :deployed_at => DateTime.parse('2011-01-01T00:00:00-08:00')
     ))
     @deployment_2 = DeploymentDecorator.new(@huddle.deployments.create!(
       :deployer    => 'ryan',
       :description => 'Deploying fix to bug introduced by gem update yesterday.',
-      :deployed_at => DateTime.parse('2011-01-02T00:00:00Z')
+      :deployed_at => DateTime.parse('2011-01-02T00:00:00-08:00')
     ))
     visit deployments_path
   end

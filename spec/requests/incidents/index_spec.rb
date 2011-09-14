@@ -5,7 +5,7 @@ describe 'incidents#index' do
   before(:each) do
     @incident_1 = IncidentDecorator.new(
       Incident.create!(
-        :occurred_at                     => DateTime.parse('2011-01-01T10:00:00Z'),
+        :occurred_at                     => DateTime.parse('2011-01-01T10:00:00-08:00'),
         :time_to_detect                  => 2,
         :time_to_diagnose                => 1,
         :time_to_resolve                 => 4,
@@ -16,7 +16,7 @@ describe 'incidents#index' do
         :required_formal_incident_report => true
       )
     )
-    @incident_2 = IncidentDecorator.new(Incident.create!(:occurred_at => DateTime.parse('2011-01-02T00:00:00Z')))
+    @incident_2 = IncidentDecorator.new(Incident.create!(:occurred_at => DateTime.parse('2011-01-02T00:00:00-08:00')))
     visit incidents_path
   end
 

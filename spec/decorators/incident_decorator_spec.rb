@@ -3,7 +3,7 @@ require 'spec_helper'
 describe IncidentDecorator, '.occurred_at_timestamp' do
 
   before(:each) do
-    @incident = Incident.new(:occurred_at => DateTime.parse('2011-01-01T21:00:00Z'))
+    @incident = Incident.new(:occurred_at => DateTime.parse('2011-01-01T21:00:00-08:00'))
     @incident_decorator = IncidentDecorator.new(@incident)
   end
 

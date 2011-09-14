@@ -17,7 +17,7 @@ end
 describe DeploymentDecorator, '.deployed_at_timestamp' do
 
   before(:each) do
-    @deployment = Deployment.new(:deployed_at => DateTime.parse('2011-01-01T16:32:00Z'))
+    @deployment = Deployment.new(:deployed_at => DateTime.parse('2011-01-01T16:32:00-08:00'))
     @deployment_decorator = DeploymentDecorator.new(@deployment)
   end
   

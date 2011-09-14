@@ -9,8 +9,14 @@ describe Project, 'attributes' do
 end
 
 describe Project, 'validations' do
+  
+  before(:each) do
+    @project = Project.create!(:name => 'Test')
+  end
 
   it { should validate_presence_of(:name) }
+  
+  it { @project.should validate_uniqueness_of(:name) }
 
 end
 

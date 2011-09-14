@@ -15,7 +15,7 @@ class Deployment < ActiveRecord::Base
     if project
       project.name = project_name
     else
-      create_project!(:name => project_name)
+      self.project = Project.find_or_create_by_name(project_name)
     end
   end
 

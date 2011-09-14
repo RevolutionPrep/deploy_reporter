@@ -1,6 +1,6 @@
 class Project < ActiveRecord::Base
   has_many :deployments
-  validates :name, :presence => true
+  validates :name, :presence => true, :uniqueness => true
 
   def deploy_rate
     10.526

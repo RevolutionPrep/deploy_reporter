@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110914053700) do
+ActiveRecord::Schema.define(:version => 20110914061712) do
 
   create_table "deployments", :force => true do |t|
     t.datetime "created_at"
@@ -44,5 +44,7 @@ ActiveRecord::Schema.define(:version => 20110914053700) do
     t.datetime "updated_at"
     t.string   "name"
   end
+
+  add_index "projects", ["name"], :name => "index_projects_on_name", :unique => true
 
 end

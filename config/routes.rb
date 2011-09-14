@@ -5,7 +5,7 @@ DeployReporter::Application.routes.draw do
     resources :incidents, :only => :index
   end
   
-  resources :deployments, :only => [:index, :show]
+  resources :deployments, :only => [:index, :show, :create]
   resources :incidents, :only => :index
   
 end

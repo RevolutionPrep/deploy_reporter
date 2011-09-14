@@ -3,7 +3,10 @@ require 'spec_helper'
 describe 'projects#index' do
 
   before(:each) do
-    @huddle   = ProjectDecorator.new(Project.create!(:name => 'Huddle', :deploy_count => 400))
+    @project  = Project.new(:name => 'Huddle')
+    @project.deployments << Deployment.create!(:deployer => 'ryan')
+    @project.save!
+    @huddle   = ProjectDecorator.new(@project)
     @socrates = ProjectDecorator.new(Project.create!(:name => 'Socrates'))
     visit projects_path
   end
@@ -25,7 +28,7 @@ describe 'projects#index' do
 
     it "displays the project's deploy count" do
       within(:xpath, "//tr[@id='#{@huddle.to_view_id}']/td[2]") do
-        page.should have_xpath("./a[@href='/projects/#{@huddle.id}/deployments' and contains(text(), '400 deployments')]")
+        page.should have_xpath("./a[@href='/projects/#{@huddle.id}/deployments' and contains(text(), '1 deployment')]")
       end
     end
 

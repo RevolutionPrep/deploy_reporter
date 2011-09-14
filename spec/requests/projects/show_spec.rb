@@ -3,7 +3,9 @@ require 'spec_helper'
 describe 'projects#show' do
 
   before(:each) do
-    @project = Project.create!(:name => 'Huddle', :deploy_count => 400)
+    @project = Project.new(:name => 'Huddle')
+    @project.deployments << Deployment.create!(:deployer => 'ryan')
+    @project.save!
     visit project_path(@project)
   end
 
@@ -13,7 +15,7 @@ describe 'projects#show' do
 
   it 'displays the total deploy count' do
     within('#deploy_count') do
-      page.should have_content('400')
+      page.should have_content('1')
     end
   end
 

@@ -10,4 +10,8 @@ class Project < ActiveRecord::Base
     0.0203
   end
 
+  def deploy_count
+    deployments.count
+  end
+
 end

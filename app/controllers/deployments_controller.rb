@@ -4,4 +4,9 @@ class DeploymentsController < ApplicationController
     @deployments = DeploymentDecorator.decorate(Deployment.all)
   end
 
+  def create
+    @deployment = Deployment.create!(params[:deployment])
+    render :nothing => true
+  end
+
 end

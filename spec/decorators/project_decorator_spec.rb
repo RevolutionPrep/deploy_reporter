@@ -27,14 +27,14 @@ end
 describe ProjectDecorator, '.deploy_count' do
   
   before(:each) do
-    @project_decorator = ProjectDecorator.new(Project.create!(:name => 'Huddle'))
+    @project = Project.create!(:name => 'Huddle')
+    @project_decorator = ProjectDecorator.new(@project)
   end
   
   it "returns the model's deploy_rate attribute rounded to 2 decimal points" do
     @project_decorator.deploy_count.should eql('0 deployments')
-    @project_decorator.model.deploy_count = 100
-    @project_decorator.deploy_count.should eql('100 deployments')
-    @project_decorator.model.deploy_count = 1
+    @project.deployments << Deployment.create!(:deployer => 'ryan')
+    @project.save
     @project_decorator.deploy_count.should eql('1 deployment')
   end
   

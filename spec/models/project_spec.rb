@@ -6,10 +6,6 @@ describe Project, 'attributes' do
     Project.new.attributes.should include('name')
   end
 
-  it 'has a deploy_count attribute' do
-    Project.new.attributes.should include('deploy_count')
-  end
-
 end
 
 describe Project, 'validations' do
@@ -19,9 +15,9 @@ describe Project, 'validations' do
 end
 
 describe Project, 'associations' do
-  
+
   it { should have_many(:deployments) }
-  
+
 end
 
 describe Project, '.deploy_rate' do
@@ -44,6 +40,20 @@ describe Project, '.incident_rate' do
 
   it 'returns a float value representing the number of incidents against the number of deploys' do
     @project.incident_rate.should be_within(0.001).of(0.02)
+  end
+
+end
+
+describe Project, '.deploy_count' do
+
+  before(:each) do
+    @project = Project.create!(:name => 'Huddle')
+  end
+
+  it 'gets incremented when a new deployment is added to the project' do
+    @project.deployments << Deployment.create!(:deployer => 'ryan')
+    @project.save
+    @project.deploy_count.should eql(1)
   end
 
 end

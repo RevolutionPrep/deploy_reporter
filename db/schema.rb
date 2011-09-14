@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110912030240) do
+ActiveRecord::Schema.define(:version => 20110914053700) do
 
   create_table "deployments", :force => true do |t|
     t.datetime "created_at"
@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(:version => 20110912030240) do
     t.datetime "deployed_at",                 :null => false
     t.string   "deployer",                    :null => false
     t.text     "description", :default => "", :null => false
-    t.integer  "project_id",                  :null => false
+    t.integer  "project_id"
   end
 
   add_index "deployments", ["project_id"], :name => "index_deployments_on_project_id"
@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(:version => 20110912030240) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
-    t.integer  "deploy_count", :default => 0, :null => false
   end
 
 end

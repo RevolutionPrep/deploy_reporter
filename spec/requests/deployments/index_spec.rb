@@ -22,15 +22,15 @@ describe 'deployments#index' do
     visit deployments_path
   end
 
-  it 'displays a list of deployments grouped by day' do
+  it 'displays a list of deployments grouped by day in reverse chronological order' do
     page.should have_content('1/1')
     within_table('deployments-2011-01-01') do
       page.should have_xpath("./tr[@id='deployment-#{@deployment_1.id}']")
     end
     page.should have_content('1/2')
     within_table('deployments-2011-01-02') do
-      page.should have_xpath("./tr[@id='deployment-#{@deployment_2.id}']")
-      page.should have_xpath("./tr[@id='deployment-#{@deployment_3.id}']")
+      page.should have_xpath("./tr[1][@id='deployment-#{@deployment_3.id}']")
+      page.should have_xpath("./tr[2][@id='deployment-#{@deployment_2.id}']")
     end
   end
 

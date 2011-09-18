@@ -1,7 +1,7 @@
 <%- @deployments.group_by(&:deployed_at_as_date).sort { |a,b| b.first <=> a.first }.each do |date, deployments| %>
 	<span class='date'><%= date.mon %>/<%= date.day %></span>
 	<table id='deployments-<%= date.strftime('%F') %>'>
-		<%- deployments.sort { |a,b| b.deployed_at <=> a.deployed_at }.each do |deployment| %>
+		<%- deployments.sort { |a,b| a.deployed_at <=> b.deployed_at }.each do |deployment| %>
 			<tr id='<%= deployment.to_view_id %>'>
 				<td><%= link_to deployment.deployed_at_timestamp, deployment %></td>
 				<td><%= link_to deployment.project_name, deployment.project %></td>

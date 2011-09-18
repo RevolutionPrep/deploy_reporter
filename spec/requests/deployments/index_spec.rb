@@ -29,8 +29,8 @@ describe 'deployments#index' do
     end
     page.should have_content('1/2')
     within_table('deployments-2011-01-02') do
-      page.should have_xpath("./tr[1][@id='deployment-#{@deployment_3.id}']")
-      page.should have_xpath("./tr[2][@id='deployment-#{@deployment_2.id}']")
+      page.should have_xpath("./tr[1][@id='deployment-#{@deployment_2.id}']")
+      page.should have_xpath("./tr[2][@id='deployment-#{@deployment_3.id}']")
     end
   end
 

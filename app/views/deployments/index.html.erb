@@ -1,15 +1,20 @@
 <%- @deployments.group_by(&:deployed_at_as_date).sort { |a,b| b.first <=> a.first }.each do |date, deployments| %>
-	<span class='date'><%= date.mon %>/<%= date.day %></span>
-	<table id='deployments-<%= date.strftime('%F') %>'>
-		<%- deployments.sort { |a,b| a.deployed_at <=> b.deployed_at }.each do |deployment| %>
-			<tr id='<%= deployment.to_view_id %>'>
-				<td><%= link_to deployment.deployed_at_timestamp, deployment %></td>
-				<td><%= link_to deployment.project_name, deployment.project %></td>
-				<td><%= deployment.deployer %></td>
-				<td>
-					<%= deployment.description_summary %><%= link_to '...', deployment %>
-				</td>
-			</tr>
-		<%- end %>
-	</table>
+	<div class='inset_container left'>
+		<span class='date'><%= date.mon %>/<%= date.day %></span>
+	</div>
+	<div class='inset_container left'>
+		<table id='deployments-<%= date.strftime('%F') %>' class='default'>
+			<%- deployments.sort { |a,b| a.deployed_at <=> b.deployed_at }.each do |deployment| %>
+				<tr id='<%= deployment.to_view_id %>'>
+					<td><%= link_to deployment.deployed_at_timestamp, deployment %></td>
+					<td><%= link_to deployment.project_name, deployment.project %></td>
+					<td><%= deployment.deployer %></td>
+					<td>
+						<%= deployment.description_summary %><%= link_to '...', deployment %>
+					</td>
+				</tr>
+			<%- end %>
+		</table>
+	</div>
+	<div class='clearfix'></div>
 <%- end %>

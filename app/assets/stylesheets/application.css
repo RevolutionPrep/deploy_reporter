@@ -42,7 +42,7 @@ html { font-size: 100%; overflow-y: scroll; -webkit-text-size-adjust: 100%; -ms-
 
 body { margin: 0; font-size: 13px; line-height: 1.231; }
 
-body, button, input, select, textarea { font-family: sans-serif; color: #222; }
+body, button, input, select, textarea { font-family: sans-serif; color: #444; }
 
 /* 
  * Remove text-shadow in selection highlight: h5bp.com/i
@@ -58,8 +58,8 @@ body, button, input, select, textarea { font-family: sans-serif; color: #222; }
    Links
    ========================================================================== */
 
-a { color: #00e; }
-a:visited { color: #551a8b; }
+a { color: #444; }
+a:visited { color: #444; }
 a:hover { color: #06e; }
 a:focus { outline: thin dotted; }
 
@@ -219,20 +219,37 @@ td { vertical-align: top; }
    Author: 
    ========================================================================== */
 
+body { background: #eee;}
 
+span.date {
+  font-size: 2em;
+}
 
+table.default {
+  width: 600px;
+}
 
+table.default tr {
+  border-top: 1px solid #555;
+}
 
+table.default tr:first-child {
+  border-top: none;
+}
 
+table.default td {
+  padding: 5px;
+}
 
+.inset_container {
+  background: #ddd;
+  border-radius: 3px;
+  box-shadow: inset 0px 0px 5px #ccc;
+  margin: 10px;
+  padding: 10px;
+}
 
-
-
-
-
-
-
-
+.left { float: left; }
 
 /* ==|== non-semantic helper classes ========================================
    Please define your styles before this section.

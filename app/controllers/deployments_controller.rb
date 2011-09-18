@@ -1,7 +1,7 @@
 class DeploymentsController < ApplicationController
 
   def index
-    @deployments = DeploymentDecorator.decorate(Deployment.all)
+    @deployments = DeploymentDecorator.decorate(Deployment.includes(:project).all)
   end
 
   def show

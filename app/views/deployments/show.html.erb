@@ -1,0 +1,5 @@
+<%= @deployment.project_name %>
+<%= @deployment.deployed_at_timestamp(:full) %>
+<%= @deployment.deployer %>
+<%= @deployment.description %>
+<%= link_to 'Report an incident', new_deployment_incident_path(@deployment) %>

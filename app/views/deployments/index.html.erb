@@ -1,5 +1,6 @@
-<%- @deployments.group_by(&:deployed_at).each do |deployed_at, deployments| %>
-	<table id='deployments-<%= deployed_at.strftime('%Y-%m-%d') %>'>
+<%- @deployments.group_by(&:deployed_at_as_date).each do |date, deployments| %>
+	<span class='date'><%= date.mon %>/<%= date.day %></span>
+	<table id='deployments-<%= date.strftime('%F') %>'>
 		<%- deployments.each do |deployment| %>
 			<tr id='<%= deployment.to_view_id %>'>
 				<td><%= link_to deployment.project_name, deployment.project %></td>
@@ -12,4 +13,3 @@
 		<%- end %>
 	</table>
 <%- end %>
-

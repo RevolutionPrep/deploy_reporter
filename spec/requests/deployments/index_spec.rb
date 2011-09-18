@@ -14,15 +14,23 @@ describe 'deployments#index' do
       :description => 'Deploying fix to bug introduced by gem update yesterday.',
       :deployed_at => DateTime.parse('2011-01-02T00:00:00-08:00')
     ))
+    @deployment_3 = DeploymentDecorator.new(@huddle.deployments.create!(
+      :deployer    => 'ryan',
+      :description => 'Deploying new versions of the Desmos gem.',
+      :deployed_at => DateTime.parse('2011-01-02T01:00:00-08:00')
+    ))
     visit deployments_path
   end
 
   it 'displays a list of deployments grouped by day' do
+    page.should have_content('1/1')
     within_table('deployments-2011-01-01') do
       page.should have_xpath("./tr[@id='deployment-#{@deployment_1.id}']")
     end
+    page.should have_content('1/2')
     within_table('deployments-2011-01-02') do
       page.should have_xpath("./tr[@id='deployment-#{@deployment_2.id}']")
+      page.should have_xpath("./tr[@id='deployment-#{@deployment_3.id}']")
     end
   end
 

@@ -24,4 +24,8 @@ class DeploymentDecorator < ApplicationDecorator
     description.slice(0,25)
   end
 
+  def deployed_at_as_date
+    deployed_at.to_date
+  end
+
 end

@@ -3,8 +3,8 @@
 	<table id='deployments-<%= date.strftime('%F') %>'>
 		<%- deployments.each do |deployment| %>
 			<tr id='<%= deployment.to_view_id %>'>
-				<td><%= link_to deployment.project_name, deployment.project %></td>
 				<td><%= link_to deployment.deployed_at_timestamp, deployment %></td>
+				<td><%= link_to deployment.project_name, deployment.project %></td>
 				<td><%= deployment.deployer %></td>
 				<td>
 					<%= deployment.description_summary %><%= link_to '...', deployment %>

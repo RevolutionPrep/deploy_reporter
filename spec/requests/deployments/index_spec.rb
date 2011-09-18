@@ -36,15 +36,15 @@ describe 'deployments#index' do
 
   context 'for a given deployment' do
 
-    it "displays the deployed project's name" do
+    it "displays the deployment's timestamp" do
       within(:xpath, "//tr[@id='#{@deployment_1.to_view_id}']/td[1]") do
-        page.should have_xpath("./a[@href='/projects/#{@huddle.id}' and contains(text(), 'Huddle')]")
+        page.should have_xpath("./a[@href='/deployments/#{@deployment_1.id}' and contains(text(), '12:00AM')]")
       end
     end
 
-    it "displays the deployment's timestamp" do
+    it "displays the deployed project's name" do
       within(:xpath, "//tr[@id='#{@deployment_1.to_view_id}']/td[2]") do
-        page.should have_xpath("./a[@href='/deployments/#{@deployment_1.id}' and contains(text(), '12:00AM')]")
+        page.should have_xpath("./a[@href='/projects/#{@huddle.id}' and contains(text(), 'Huddle')]")
       end
     end
 

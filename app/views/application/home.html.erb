@@ -1,0 +1,10 @@
+Projects
+<table id='projects'>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr>
+        <td><%= project.name %></td>
+      </tr>
+    <%- end %>
+  </tbody>
+</table>

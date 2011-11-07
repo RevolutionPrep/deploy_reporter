@@ -6,7 +6,7 @@
  *= require_tree . 
 */
 
-/* 
+/*
  * HTML5 ✰ Boilerplate
  *
  * What follows is the result of much research on cross-browser styling. 
@@ -17,7 +17,6 @@
  * 
  * ==|== normalize ==========================================================
  */
-
 
 /* =============================================================================
    HTML5 display definitions
@@ -44,7 +43,7 @@ body { margin: 0; font-size: 13px; line-height: 1.231; }
 
 body, button, input, select, textarea { font-family: sans-serif; color: #444; }
 
-/* 
+/*
  * Remove text-shadow in selection highlight: h5bp.com/i
  * These selection declarations have to be separate
  * Also: hot pink! (or customize the background color to match your design)
@@ -52,7 +51,6 @@ body, button, input, select, textarea { font-family: sans-serif; color: #444; }
 
 ::-moz-selection { background: #fe57a1; color: #fff; text-shadow: none; }
 ::selection { background: #fe57a1; color: #fff; text-shadow: none; }
-
 
 /* =============================================================================
    Links
@@ -65,7 +63,6 @@ a:focus { outline: thin dotted; }
 
 /* Improve readability when focused and hovered in all browsers: h5bp.com/h */
 a:hover, a:active { outline: 0; }
-
 
 /* =============================================================================
    Typography
@@ -101,7 +98,6 @@ sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: b
 sup { top: -0.5em; }
 sub { bottom: -0.25em; }
 
-
 /* =============================================================================
    Lists
    ========================================================================== */
@@ -109,7 +105,6 @@ sub { bottom: -0.25em; }
 ul, ol { margin: 1em 0; padding: 0 0 0 40px; }
 dd { margin: 0 0 0 40px; }
 nav ul, nav ol { list-style: none; list-style-image: none; margin: 0; padding: 0; }
-
 
 /* =============================================================================
    Embedded content
@@ -128,13 +123,11 @@ img { border: 0; -ms-interpolation-mode: bicubic; vertical-align: middle; }
 
 svg:not(:root) { overflow: hidden; }
 
-
 /* =============================================================================
    Figures
    ========================================================================== */
 
 figure { margin: 0; }
-
 
 /* =============================================================================
    Forms
@@ -146,9 +139,9 @@ fieldset { border: 0; margin: 0; padding: 0; }
 /* Indicate that 'label' will shift focus to the associated form element */
 label { cursor: pointer; }
 
-/* 
- * 1. Correct color not inheriting in IE6/7/8/9 
- * 2. Correct alignment displayed oddly in IE6/7 
+/*
+ * 1. Correct color not inheriting in IE6/7/8/9
+ * 2. Correct alignment displayed oddly in IE6/7
  */
 
 legend { border: 0; *margin-left: -7px; padding: 0; }
@@ -189,14 +182,14 @@ input[type="checkbox"], input[type="radio"] { box-sizing: border-box; }
 input[type="search"] { -webkit-appearance: textfield; -moz-box-sizing: content-box; -webkit-box-sizing: content-box; box-sizing: content-box; }
 input[type="search"]::-webkit-search-decoration { -webkit-appearance: none; }
 
-/* 
- * Remove inner padding and border in FF3/4: h5bp.com/l 
+/*
+ * Remove inner padding and border in FF3/4: h5bp.com/l
  */
 
 button::-moz-focus-inner, input::-moz-focus-inner { border: 0; padding: 0; }
 
-/* 
- * 1. Remove default vertical scrollbar in IE6/7/8/9 
+/*
+ * 1. Remove default vertical scrollbar in IE6/7/8/9
  * 2. Allow only vertical resizing
  */
 
@@ -206,7 +199,6 @@ textarea { overflow: auto; vertical-align: top; resize: vertical; }
 input:valid, textarea:valid {  }
 input:invalid, textarea:invalid { background-color: #f0dddd; }
 
-
 /* =============================================================================
    Tables
    ========================================================================== */
@@ -214,9 +206,8 @@ input:invalid, textarea:invalid { background-color: #f0dddd; }
 table { border-collapse: collapse; border-spacing: 0; }
 td { vertical-align: top; }
 
-
 /* ==|== primary styles =====================================================
-   Author: 
+   Author:
    ========================================================================== */
 
 body { background: #eee;}
@@ -271,12 +262,10 @@ table.default td {
 /* Hide visually and from screenreaders, but maintain layout */
 .invisible { visibility: hidden; }
 
-/* Contain floats: h5bp.com/q */ 
+/* Contain floats: h5bp.com/q */
 .clearfix:before, .clearfix:after { content: ""; display: table; }
 .clearfix:after { clear: both; }
 .clearfix { zoom: 1; }
-
-
 
 /* ==|== media queries ======================================================
    PLACEHOLDER Media Queries for Responsive Design.
@@ -294,13 +283,11 @@ table.default td {
 
 }
 
-
-
 /* ==|== print styles =======================================================
    Print styles.
    Inlined to avoid required HTTP connection: h5bp.com/r
    ========================================================================== */
- 
+
 @media print {
   * { background: transparent !important; color: black !important; text-shadow: none !important; filter:none !important; -ms-filter: none !important; } /* Black prints faster: h5bp.com/s */
   a, a:visited { text-decoration: underline; }

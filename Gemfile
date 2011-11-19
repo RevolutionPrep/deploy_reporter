@@ -24,5 +24,5 @@ group :test do
   gem 'autotest-standalone'
   gem 'capybara'
   gem 'launchy'
-  gem 'factory_girl'
+  gem 'factory_girl_rails'
 end

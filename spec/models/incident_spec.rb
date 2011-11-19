@@ -1,49 +1,25 @@
 require 'spec_helper'
 
-describe Incident, 'attributes' do
+describe Incident do
 
-  it 'has an occurred_at attribute' do
-    Incident.new.attributes.should include('occurred_at')
-  end
-
-  it 'has a time_to_detect attribute' do
-    Incident.new.attributes.should include('time_to_detect')
-  end
-
-  it 'has a time_to_diagnose attribute' do
-    Incident.new.attributes.should include('time_to_diagnose')
-  end
-
-  it 'has a time_to_resolve attribute' do
-    Incident.new.attributes.should include('time_to_resolve')
-  end
-
-  it 'has a had_errors attribute' do
-    Incident.new.attributes.should include('had_errors')
-  end
-
-  it 'has a required_redeploy attribute' do
-    Incident.new.attributes.should include('required_redeploy')
-  end
-
-  it 'has a required_rollback attribute' do
-    Incident.new.attributes.should include('required_rollback')
-  end
-
-  it 'has a noticed_outside_of_development' do
-    Incident.new.attributes.should include('noticed_outside_of_development')
-  end
-
-  it 'has a required_formal_incident_report attribute' do
-    Incident.new.attributes.should include('required_formal_incident_report')
-  end
-
-  it 'has a description attribute' do
-    Incident.new.attributes.should include('description')
-  end
-
-  it 'has a lessons_learned attribute' do
-    Incident.new.attributes.should include('lessons_learned')
+  it 'has the right attributes' do
+    attributes = [
+      :created_at,
+      :description,
+      :had_errors,
+      :id,
+      :lessons_learned,
+      :noticed_outside_of_development,
+      :occurred_at,
+      :required_formal_incident_report,
+      :required_redeploy,
+      :required_rollback,
+      :time_to_detect,
+      :time_to_diagnose,
+      :time_to_resolve,
+      :updated_at
+    ]
+    Incident.column_names.sort.map(&:to_sym).should eql(attributes)
   end
 
 end

@@ -1,87 +1,81 @@
 require 'spec_helper'
 
-describe Deployment, 'attributes' do
+describe Deployment do
+  let(:deployment) { Deployment.create!(:deployer => 'ryan', :deployed_at => DateTime.now) }
 
-  it 'has a deployer attribute' do
-    Deployment.new.attributes.should include('deployer')
+  it 'has the right attributes' do
+    attributes = [
+      :created_at,
+      :deployed_at,
+      :deployer,
+      :description,
+      :id,
+      :project_id,
+      :updated_at
+    ]
+    Deployment.column_names.sort.map(&:to_sym).should eql(attributes)
   end
 
-  it 'has a description attribute' do
-    Deployment.new.attributes.should include('description')
+  describe 'associations' do
+
+    it { should belong_to(:project) }
+
   end
 
-  it 'has a deployed_at attribute' do
-    Deployment.new.attributes.should include('deployed_at')
+  describe 'validations' do
+
+    it { deployment.should validate_presence_of(:deployer) }
+
+    it { deployment.should validate_presence_of(:deployed_at) }
+
   end
 
-end
+  describe '#project_name' do
 
-describe Deployment, 'associations' do
-
-  it { should belong_to(:project) }
-
-end
-
-describe Deployment, 'validations' do
-
-  before(:each) do
-    @deployment = Deployment.create!(:deployer => 'ryan', :deployed_at => DateTime.now)
-  end
-
-  it { @deployment.should validate_presence_of(:deployer) }
-
-  it { @deployment.should validate_presence_of(:deployed_at) }
-
-end
-
-describe Deployment, '.project_name' do
-
-  before(:each) do
-    @project = Project.create!(:name => 'Huddle')
-    @deployment = Deployment.new(:project => @project)
-  end
-
-  it 'the name of the project that this deployment belongs to' do
-    @deployment.project_name.should eql('Huddle')
-  end
-
-end
-
-describe Deployment, '.project_name=' do
-
-  before(:each) do
-    @deployment = Deployment.create!(:deployer => 'ryan', :deployed_at => DateTime.now)
-  end
-
-  context 'when the deployment belongs to a project' do
-    
     before(:each) do
-      @deployment.project = Project.create!(:name => 'Huddle')
+      @project = Project.create!(:name => 'Huddle')
+      deployment.project = @project
     end
 
-    it 'returns the name of the project that this deployment belongs to' do
-      @deployment.project_name = 'Socrates'
-      @deployment.project_name.should eql('Socrates')
-    end
-
-  end
-  
-  context 'when the deployment does not belong to a project' do
-
-    it 'creates a project and names it according to the project_name value given' do
-      @deployment.project_name = 'Socrates'
-      @deployment.project_name.should eql('Socrates')
+    it 'the name of the project that this deployment belongs to' do
+      deployment.project_name.should eql('Huddle')
     end
 
   end
 
-end
+  describe '#project_name=' do
 
-describe Deployment, '.deployed_at' do
-  
-  it 'specifies the deployed_at value upon creation unless one is specified in the attributes hash' do
-    deployment = Deployment.create!(:deployer => 'ryan')
-    deployment.deployed_at.should_not be_nil
+    context 'when the deployment belongs to a project' do
+
+      before(:each) do
+        deployment.project = Project.create!(:name => 'Huddle')
+      end
+
+      it 'returns the name of the project that this deployment belongs to' do
+        deployment.project_name = 'Socrates'
+        deployment.project_name.should eql('Socrates')
+      end
+
+    end
+
+    context 'when the deployment does not belong to a project' do
+
+      it 'creates a project and names it according to the project_name value given' do
+        deployment.project_name = 'Socrates'
+        deployment.project_name.should eql('Socrates')
+      end
+
+    end
+
   end
-  
+
+  describe '#deployed_at' do
+
+    it 'specifies the deployed_at value upon creation unless one is specified in the attributes hash' do
+      deployment = Deployment.create!(:deployer => 'ryan')
+      deployment.deployed_at.should_not be_nil
+    end
+
+  end
+
 end

@@ -1,65 +1,56 @@
 require 'spec_helper'
 
-describe Project, 'attributes' do
+describe Project do
+  let(:project) { Project.create!(:name => 'Test') }
 
-  it 'has a name attribute' do
-    Project.new.attributes.should include('name')
+  it 'has the right attributes' do
+    attributes = [
+      :created_at,
+      :id,
+      :name,
+      :updated_at
+    ]
+    Project.column_names.sort.map(&:to_sym).should eql(attributes)
   end
 
-end
+  describe 'validations' do
 
-describe Project, 'validations' do
-  
-  before(:each) do
-    @project = Project.create!(:name => 'Test')
+    it { should validate_presence_of(:name) }
+
+    it { project.should validate_uniqueness_of(:name) }
+
   end
 
-  it { should validate_presence_of(:name) }
-  
-  it { @project.should validate_uniqueness_of(:name) }
+  describe 'associations' do
 
-end
+    it { should have_many(:deployments) }
 
-describe Project, 'associations' do
-
-  it { should have_many(:deployments) }
-
-end
-
-describe Project, '.deploy_rate' do
-
-  before(:each) do
-    @project = Project.create!(:name => 'Huddle')
   end
 
-  it 'returns a float value representing the number of deploys per day over the life of the project' do
-    @project.deploy_rate.should be_within(0.05).of(10.526)
+  describe '#deploy_rate' do
+
+    it 'returns a float value representing the number of deploys per day over the life of the project' do
+      project.deploy_rate.should be_within(0.05).of(10.526)
+    end
+
   end
 
-end
+  describe '#incident_rate' do
 
-describe Project, '.incident_rate' do
+    it 'returns a float value representing the number of incidents against the number of deploys' do
+      project.incident_rate.should be_within(0.001).of(0.02)
+    end
 
-  before(:each) do
-    @project = Project.create!(:name => 'Huddle')
   end
 
-  it 'returns a float value representing the number of incidents against the number of deploys' do
-    @project.incident_rate.should be_within(0.001).of(0.02)
-  end
+  describe '#deploy_count' do
 
-end
+    it 'gets incremented when a new deployment is added to the project' do
+      project.deployments << Deployment.create!(:deployer => 'ryan')
+      project.save
+      project.deploy_count.should eql(1)
+    end
 
-describe Project, '.deploy_count' do
-
-  before(:each) do
-    @project = Project.create!(:name => 'Huddle')
-  end
-
-  it 'gets incremented when a new deployment is added to the project' do
-    @project.deployments << Deployment.create!(:deployer => 'ryan')
-    @project.save
-    @project.deploy_count.should eql(1)
   end
 
 end

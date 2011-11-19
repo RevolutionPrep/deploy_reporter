@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'root' do
 
   before(:each) do
-    @huddle  = Project.create(:name => 'Huddle')
-    @polaris = Project.create(:name => 'Polaris')
+    @huddle  = create(:project, :name => 'Huddle')
+    @polaris = create(:project, :name => 'Polaris')
     visit root_path
   end
 

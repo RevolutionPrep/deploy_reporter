@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe DeploymentDecorator do
-  let(:deployment) { Deployment.new }
+  let(:deployment) { build(:deployment) }
 
   describe '#project_name' do
 

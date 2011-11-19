@@ -3,11 +3,11 @@ require 'spec_helper'
 describe 'projects#index' do
 
   before(:each) do
-    @project  = Project.new(:name => 'Huddle')
-    @project.deployments << Deployment.create!(:deployer => 'ryan')
+    @project  = build(:project)
+    @project.deployments << create(:deployment)
     @project.save!
-    @huddle   = ProjectDecorator.new(@project)
-    @socrates = ProjectDecorator.new(Project.create!(:name => 'Socrates'))
+    @huddle   = @project.decorator
+    @socrates = create(:project, :name => 'Socrates').decorator
     visit projects_path
   end
 

@@ -3,8 +3,7 @@ require 'spec_helper'
 describe 'deployments#show' do
 
   before(:each) do
-    @deployment = Deployment.create!(
-      :deployer     => 'ryan',
+    @deployment = create(:deployment,
       :project_name => 'Huddle',
       :deployed_at  => DateTime.parse('2011-09-17T17:00:00-07:00'),
       :description  => 'Changing the gems required for the whiteboard platform.'

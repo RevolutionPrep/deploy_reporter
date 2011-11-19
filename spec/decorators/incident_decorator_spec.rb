@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe IncidentDecorator do
-  let(:incident) { Incident.new }
+  let(:incident) { build(:incident) }
 
   describe '#occurred_at_timestamp' do
 

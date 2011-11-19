@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe ProjectDecorator do
-  let(:project) { Project.new(:name => 'Huddle') }
+  let(:project) { build(:project) }
 
   describe '#incident_rate_fraction' do
 

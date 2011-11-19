@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Deployment do
-  let(:deployment) { Deployment.create!(:deployer => 'ryan', :deployed_at => DateTime.now) }
+  let(:deployment) { create(:deployment) }
 
   it 'has the right attributes' do
     attributes = [
@@ -33,8 +33,7 @@ describe Deployment do
   describe '#project_name' do
 
     before(:each) do
-      @project = Project.create!(:name => 'Huddle')
-      deployment.project = @project
+      deployment.project = create(:project)
     end
 
     it 'the name of the project that this deployment belongs to' do
@@ -48,7 +47,7 @@ describe Deployment do
     context 'when the deployment belongs to a project' do
 
       before(:each) do
-        deployment.project = Project.create!(:name => 'Huddle')
+        deployment.project = create(:project)
       end
 
       it 'returns the name of the project that this deployment belongs to' do
@@ -72,7 +71,7 @@ describe Deployment do
   describe '#deployed_at' do
 
     it 'specifies the deployed_at value upon creation unless one is specified in the attributes hash' do
-      deployment = Deployment.create!(:deployer => 'ryan')
+      deployment = create(:deployment)
       deployment.deployed_at.should_not be_nil
     end
 

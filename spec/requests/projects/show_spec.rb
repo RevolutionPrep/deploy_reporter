@@ -3,8 +3,8 @@ require 'spec_helper'
 describe 'projects#show' do
 
   before(:each) do
-    @project = Project.new(:name => 'Huddle')
-    @project.deployments << Deployment.create!(:deployer => 'ryan')
+    @project = build(:project)
+    @project.deployments << create(:deployment)
     @project.save!
     visit project_path(@project)
   end

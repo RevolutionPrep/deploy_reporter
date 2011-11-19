@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Project do
-  let(:project) { Project.create!(:name => 'Test') }
+  let(:project) { create(:project) }
 
   it 'has the right attributes' do
     attributes = [
@@ -46,7 +46,7 @@ describe Project do
   describe '#deploy_count' do
 
     it 'gets incremented when a new deployment is added to the project' do
-      project.deployments << Deployment.create!(:deployer => 'ryan')
+      project.deployments << create(:deployment)
       project.save
       project.deploy_count.should eql(1)
     end

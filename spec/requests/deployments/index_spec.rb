@@ -3,22 +3,27 @@ require 'spec_helper'
 describe 'deployments#index' do
 
   before(:each) do
-    @huddle = Project.create!(:name => 'Huddle')
-    @deployment_1 = DeploymentDecorator.new(@huddle.deployments.create!(
-      :deployer    => 'ryan',
+    @huddle = create(:project, :name => 'Huddle')
+    @deployment_1 = create(:deployment,
       :description => 'Deploying new versions of the Desmos gem.',
       :deployed_at => DateTime.parse('2011-01-01T00:00:00-08:00')
-    ))
-    @deployment_2 = DeploymentDecorator.new(@huddle.deployments.create!(
-      :deployer    => 'ryan',
+    )
+    @deployment_2 = create(:deployment,
       :description => 'Deploying fix to bug introduced by gem update yesterday.',
       :deployed_at => DateTime.parse('2011-01-02T00:00:00-08:00')
-    ))
-    @deployment_3 = DeploymentDecorator.new(@huddle.deployments.create!(
-      :deployer    => 'ryan',
+    )
+    @deployment_3 = create(:deployment,
       :description => 'Deploying new versions of the Desmos gem.',
       :deployed_at => DateTime.parse('2011-01-02T01:00:00-08:00')
-    ))
+    )
+
+    @huddle.deployments << @deployment_1 << @deployment_2 << @deployment_3
+    @huddle.save
+
+    @deployment_1 = @deployment_1.decorator
+    @deployment_2 = @deployment_2.decorator
+    @deployment_3 = @deployment_3.decorator
+
     visit deployments_path
   end
 

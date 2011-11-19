@@ -18,7 +18,7 @@ describe 'deployments#create' do
   context 'when a project exists, but no deployments exist' do
 
     before(:each) do
-      Project.create!(:name => 'Huddle')
+      create(:project)
     end
 
     it 'creates a deployment for the existing project' do

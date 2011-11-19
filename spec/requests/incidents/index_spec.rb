@@ -1,22 +1,20 @@
 require 'spec_helper'
 
 describe 'incidents#index' do
-  
+
   before(:each) do
-    @incident_1 = IncidentDecorator.new(
-      Incident.create!(
-        :occurred_at                     => DateTime.parse('2011-01-01T10:00:00-08:00'),
-        :time_to_detect                  => 2,
-        :time_to_diagnose                => 1,
-        :time_to_resolve                 => 4,
-        :had_errors                      => true,
-        :required_redeploy               => true,
-        :required_rollback               => true,
-        :noticed_outside_of_development  => true,
-        :required_formal_incident_report => true
-      )
-    )
-    @incident_2 = IncidentDecorator.new(Incident.create!(:occurred_at => DateTime.parse('2011-01-02T00:00:00-08:00')))
+    @incident_1 = create(:incident,
+      :occurred_at                     => DateTime.parse('2011-01-01T10:00:00-08:00'),
+      :time_to_detect                  => 2,
+      :time_to_diagnose                => 1,
+      :time_to_resolve                 => 4,
+      :had_errors                      => true,
+      :required_redeploy               => true,
+      :required_rollback               => true,
+      :noticed_outside_of_development  => true,
+      :required_formal_incident_report => true
+    ).decorator
+    @incident_2 = create(:incident, :occurred_at => DateTime.parse('2011-01-02T00:00:00-08:00')).decorator
     visit incidents_path
   end
 

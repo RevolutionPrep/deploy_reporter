@@ -1,4 +1,9 @@
 Autotest.add_hook(:initialize) do |autotest|
+  autotest.add_exception(%r{^\./\.git})
+  autotest.add_exception(%r{^\./db})
+  autotest.add_exception(%r{^\./rerun.txt})
+  autotest.add_exception(%r{^\./log})
+
   autotest.add_mapping(%r{^app/decorators/.*\.rb$}) do |f, _|
     Dir['spec/decorators/*_spec.rb']
   end

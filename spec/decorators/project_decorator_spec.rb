@@ -22,6 +22,7 @@ describe ProjectDecorator do
     end
 
     it "returns the model's deploy_rate attribute rounded to 2 decimal points" do
+      project.stub(:deploy_rate => 10.526)
       @decorator.deploy_rate.should eql(10.53)
     end
 

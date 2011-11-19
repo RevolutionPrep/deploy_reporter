@@ -19,4 +19,8 @@ class Deployment < ActiveRecord::Base
     end
   end
 
+  def deployed_on
+    deployed_at.to_date
+  end
+
 end

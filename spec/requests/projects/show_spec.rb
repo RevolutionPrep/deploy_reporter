@@ -4,30 +4,33 @@ describe 'projects#show' do
 
   before(:each) do
     @project = build(:project)
-    @project.deployments << create(:deployment)
+    10.times do
+      @project.deployments << create(:deployment)
+    end
     @project.save!
+    @project = @project.decorator
     visit project_path(@project)
   end
 
   it 'displays the name of the project' do
-    page.should have_content('Huddle')
+    page.should have_content(@project.name)
   end
 
   it 'displays the total deploy count' do
     within('#deploy_count') do
-      page.should have_content('1')
+      page.should have_content(@project.deploy_count)
     end
   end
 
   it 'displays the deploy rate' do
     within('#deploy_rate') do
-      page.should have_content('10.53')
+      page.should have_content(@project.deploy_rate)
     end
   end
 
   it 'displays the incident rate' do
     within('#incident_rate') do
-      page.should have_content('1/49')
+      page.should have_content(@project.incident_rate_fraction)
     end
   end
 

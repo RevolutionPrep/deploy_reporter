@@ -77,4 +77,13 @@ describe Deployment do
 
   end
 
+  describe '#deployed_on' do
+
+    it 'specifies the deployed_at value as a date' do
+      deployment.deployed_at = DateTime.parse('2011-01-01T00:00:00-08:00')
+      deployment.deployed_on.should eql(Date.parse('2011-01-01'))
+    end
+
+  end
+
 end

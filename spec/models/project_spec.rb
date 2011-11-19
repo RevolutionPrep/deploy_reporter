@@ -29,8 +29,39 @@ describe Project do
 
   describe '#deploy_rate' do
 
-    it 'returns a float value representing the number of deploys per day over the life of the project' do
-      project.deploy_rate.should be_within(0.05).of(10.526)
+    context 'when the project has deployments' do
+
+      before(:each) do
+        3.times do
+          project.deployments << create(:deployment, :deployed_at => DateTime.now)
+        end
+        5.times do
+          project.deployments << create(:deployment, :deployed_at => DateTime.now + 1.day)
+        end
+        1.times do
+          project.deployments << create(:deployment, :deployed_at => DateTime.now + 2.days)
+        end
+        3.times do
+          project.deployments << create(:deployment, :deployed_at => DateTime.now + 3.days)
+        end
+        4.times do
+          project.deployments << create(:deployment, :deployed_at => DateTime.now + 4.days)
+        end
+        project.save!
+      end
+
+      it 'returns a float value representing the number of deploys per day over the life of the project' do
+        project.deploy_rate.should be_within(0.05).of(3.2)
+      end
+
+    end
+
+    context 'when the project has no deployments' do
+
+      it 'returns 0.0' do
+        project.deploy_rate.should eql(0.0)
+      end
+
     end
 
   end

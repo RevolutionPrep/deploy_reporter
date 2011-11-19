@@ -34,7 +34,7 @@ describe 'projects#index' do
 
     it "displays the project's deploy rate" do
       within(:xpath, "//tr[@id='#{@huddle.to_view_id}']/td[3]") do
-        page.should have_content('10.53')
+        page.should have_content(@huddle.deploy_rate)
       end
     end
 

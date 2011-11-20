@@ -6,6 +6,7 @@ gem 'jquery-rails'
 gem 'pg'
 gem 'fraction'
 gem 'draper'
+gem 'rails-boilerplate'
 
 group :assets do
   gem 'sass-rails',   '~> 3.1.0'

@@ -8,6 +8,10 @@ gem 'fraction'
 gem 'draper'
 gem 'rails-boilerplate'
 
+group :production do
+  gem 'therubyracer-heroku', '0.8.1.pre3'
+end
+
 group :assets do
   gem 'sass-rails',   '~> 3.1.0'
   gem 'coffee-rails', '~> 3.1.0'

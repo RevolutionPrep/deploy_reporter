@@ -8,12 +8,16 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>DeployReporter</title>
   <%= stylesheet_link_tag    "application" %>
-	<%= csrf_meta_tags %>
+  <%= csrf_meta_tags %>
 </head>
 <body>
-  <%= link_to 'Projects', projects_path %>
-  <%= link_to 'Deployments', deployments_path %>
-  <%= link_to 'Incidents', incidents_path %>
-	<%= yield %>
+  <div id='container'>
+    <header>
+      <%= link_to 'Projects', projects_path %>
+      <%= link_to 'Deployments', deployments_path %>
+      <%= link_to 'Incidents', incidents_path %>
+    </header>
+    <%= yield %>
+  </div>
 </body>
 </html>

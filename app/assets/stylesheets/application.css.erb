@@ -210,37 +210,40 @@ td { vertical-align: top; }
    Author:
    ========================================================================== */
 
-body { background: #eee;}
+body {
+  background-image: url(<%= asset_path 'concrete.png' %>);
+  text-align: center;
+}
 
-span.date {
+#container {
+  width: 960px;
+  text-align: left;
+  margin: 0 auto;
+  background: rgba(255,255,255,0.25);
+  padding: 0 20px 20px 20px;
+}
+
+header { margin-bottom: 20px; }
+header a {
+  background: rgba(0,0,0,0.2);
+  color: #FFF;
+  margin-right: 10px;
+  text-decoration: none;
+  padding: 5px 10px;
   font-size: 2em;
 }
 
-table.default {
-  width: 600px;
+header a:hover {
+  background: rgba(0,0,0,0.3);
+  color: #FFF;
+  text-shadow: none;
+  box-shadow: #AAA 1px 2px 4px;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition:    all 0.25s ease-in-out;
+  -o-transition:      all 0.25s ease-in-out;
+  -ms-transition:     all 0.25s ease-in-out;
+  transition:         all 0.25s ease-in-out;
 }
-
-table.default tr {
-  border-top: 1px solid #555;
-}
-
-table.default tr:first-child {
-  border-top: none;
-}
-
-table.default td {
-  padding: 5px;
-}
-
-.inset_container {
-  background: #ddd;
-  border-radius: 3px;
-  box-shadow: inset 0px 0px 5px #ccc;
-  margin: 10px;
-  padding: 10px;
-}
-
-.left { float: left; }
 
 /* ==|== non-semantic helper classes ========================================
    Please define your styles before this section.

@@ -11,6 +11,8 @@ describe 'deployments#show' do
     visit deployment_path(@deployment)
   end
 
+  it_should_behave_like 'a page with navigation chrome'
+
   it 'displays the name of the project deployed' do
     page.should have_content('Huddle')
   end

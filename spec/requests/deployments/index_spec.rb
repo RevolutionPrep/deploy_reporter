@@ -35,6 +35,8 @@ describe 'deployments#index' do
       visit deployments_path
     end
 
+    it_should_behave_like 'a page with navigation chrome'
+
     it 'displays a list of deployments grouped by day in reverse chronological order' do
       page.should have_content('1/1')
       within_table('deployments-2011-01-01') do
@@ -83,6 +85,8 @@ describe 'deployments#index' do
     before(:each) do
       visit project_deployments_path(@polaris)
     end
+
+    it_should_behave_like 'a page with navigation chrome'
 
     it 'displays the list of deployments for this project only' do
       page.should_not have_content('1/1')

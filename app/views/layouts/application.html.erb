@@ -11,6 +11,9 @@
 	<%= csrf_meta_tags %>
 </head>
 <body>
+  <%= link_to 'Projects', projects_path %>
+  <%= link_to 'Deployments', deployments_path %>
+  <%= link_to 'Incidents', incidents_path %>
 	<%= yield %>
 </body>
 </html>

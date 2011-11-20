@@ -11,6 +11,8 @@ describe 'projects#index' do
     visit projects_path
   end
 
+  it_should_behave_like 'a page with navigation chrome'
+
   it 'displays a list of projects' do
     within_table('projects') do
       page.should have_xpath("./tr[@id='project-#{@huddle.id}']")

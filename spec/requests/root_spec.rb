@@ -8,6 +8,8 @@ describe 'root' do
     visit root_path
   end
 
+  it_should_behave_like 'a page with navigation chrome'
+
   it 'displays a list of deployed projects, with links to the show page for that project' do
     page.should have_content('Projects')
     within_table('projects') do

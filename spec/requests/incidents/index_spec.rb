@@ -18,6 +18,8 @@ describe 'incidents#index' do
     visit incidents_path
   end
 
+  it_should_behave_like 'a page with navigation chrome'
+
   it 'displays a list of incidents grouped by date' do
     within_table('incidents-2011-01-01') do
       page.should have_xpath("./tr[@id='incident-#{@incident_1.id}']")

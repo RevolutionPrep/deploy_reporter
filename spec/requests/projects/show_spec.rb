@@ -12,6 +12,8 @@ describe 'projects#show' do
     visit project_path(@project)
   end
 
+  it_should_behave_like 'a page with navigation chrome'
+
   it 'displays the name of the project' do
     page.should have_content(@project.name)
   end

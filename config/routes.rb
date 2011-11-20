@@ -1,6 +1,6 @@
 DeployReporter::Application.routes.draw do
 
-  root :to => 'application#home'
+  root :to => 'projects#index'
 
   resources :projects, :only => [:index, :show] do
     resources :deployments, :only => :index

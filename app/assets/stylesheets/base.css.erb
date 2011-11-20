@@ -6,12 +6,12 @@ a { color: #444; }
 a:visited { color: #444; }
 a:hover { color: #06E; }
 
-.container_16 {
-  background: rgba(255,255,255,0.4);
-  padding: 0 20px 20px 20px;
-  border-right:  1px solid #FFF;
-  border-left:   1px solid #FFF;
-  border-bottom: 1px solid #FFF;
+#wrapper {
+  background: rgba(0,0,0,0.4);
+  border-right:  1px solid #777;
+  border-left:   1px solid #777;
+  border-bottom: 1px solid #777;
+  box-shadow: #888 0px 0px 10px;
 }
 
 header {
@@ -25,16 +25,43 @@ header a {
   text-decoration: none;
   padding: 5px 10px;
   font-size: 1.5em;
+  -moz-border-bottom-left-radius:  5px;
+  -moz-border-bottom-right-radius: 5px;
+  border-bottom-left-radius:  5px;
+  border-bottom-right-radius: 5px;
 }
 
 header a:hover {
-  background: rgba(255,255,255,0.3);
   color: #FFF;
-  text-shadow: none;
-  box-shadow: #666 1px 2px 4px;
   -webkit-transition: all 0.25s ease-in-out;
-  -moz-transition: all 0.25s ease-in-out;
-  -o-transition: all 0.25s ease-in-out;
-  -ms-transition: all 0.25s ease-in-out;
-  transition: all 0.25s ease-in-out;
+  -moz-transition:    all 0.25s ease-in-out;
+  -o-transition:      all 0.25s ease-in-out;
+  -ms-transition:     all 0.25s ease-in-out;
+  transition:         all 0.25s ease-in-out;
+}
+
+table {
+  margin-bottom: 20px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+}
+
+table tr {
+  background: rgba(255,255,255,0.1);
+  border-top: 1px solid #888;
+}
+
+table tr:first-child {
+  border-top: none;
+}
+
+table tr td {
+  padding: 5px 0px;
+}
+
+.table_header {
+  color: #FFF;
+  font-size: 1.3em;
+  padding: 10px 0px 5px 0px;
+  text-shadow: #444 1px 1px;
 }

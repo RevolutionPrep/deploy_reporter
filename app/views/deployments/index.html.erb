@@ -1,15 +1,16 @@
 <%- @deployments.group_by(&:deployed_at_as_date).sort { |a,b| b.first <=> a.first }.each do |date, deployments| %>
-		<%= date.mon %>/<%= date.day %>
-		<table id='deployments-<%= date.strftime('%F') %>'>
+		<div class='table_header grid_4 suffix_12'><%= date.mon %>/<%= date.day %></div>
+		<table id='deployments-<%= date.strftime('%F') %>' class='container_16'>
 			<%- deployments.sort { |a,b| a.deployed_at <=> b.deployed_at }.each do |deployment| %>
 				<tr id='<%= deployment.to_view_id %>'>
-					<td><%= link_to deployment.deployed_at_timestamp, deployment %></td>
-					<td><%= link_to deployment.project_name, deployment.project %></td>
-					<td><%= deployment.deployer %></td>
-					<td>
+					<td class='grid_4'><%= link_to deployment.deployed_at_timestamp, deployment %></td>
+					<td class='grid_4'><%= link_to deployment.project_name, deployment.project %></td>
+					<td class='grid_4'><%= deployment.deployer %></td>
+					<td class='grid_4'>
 						<%= deployment.description_summary %><%= link_to '...', deployment %>
 					</td>
 				</tr>
 			<%- end %>
 		</table>
+    <div class='clear'></div>
 <%- end %>
